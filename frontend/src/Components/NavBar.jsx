@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Login from "./Login";
 
 export default function () {
   return (
@@ -16,10 +17,13 @@ export default function () {
               <Link to="/">Acceuil</Link>
             </li>
             <li>
-              <Link to="/games">Annonces</Link>
+              <Link to="/ads">Annonces</Link>
             </li>
             <li>
-              <button to="/contact">connexion</button>
+              <Link to="/postads">poster une annonce</Link>
+            </li>
+            <li>
+              <Login />
             </li>
           </ul>
         </label>
