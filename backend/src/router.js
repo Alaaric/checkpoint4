@@ -4,10 +4,20 @@ const router = express.Router();
 const adsController = require("./controllers/adsController");
 const messagesController = require("./controllers/messagesController");
 const usersController = require("./controllers/usersController");
+const {
+  hashPassword,
+  verifyPassword,
+  verifyToken,
+} = require("./services/checkAuth");
 
+router.post(
+  "/login",
+  usersController.getUserByEmailWithPasswordAndPassToNext,
+  verifyPassword
+);
 router.get("/users", usersController.browseUsers);
 router.get("/users/:id", usersController.readUser);
-router.post("/users", usersController.addUser);
+router.post("/register", hashPassword, usersController.addUser);
 router.put("users/id", usersController.editUser);
 router.delete("users/:id", usersController.destroyUser);
 
