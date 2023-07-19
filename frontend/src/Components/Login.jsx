@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -7,11 +7,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
+import userContext from "../contexts/userContext";
 
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [open, setOpen] = useState(false);
+  const { setUser, user } = useContext(userContext);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -21,16 +23,18 @@ export default function Login() {
     setOpen(false);
   };
   const submit = () => {
-    axios.post(
-      `${import.meta.env.VITE_BACKEND_URL}/login`,
-      {
-        email,
-        password,
-      },
-      {
-        withCredentials: true,
-      }
-    );
+    axios
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/login`,
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => setUser(res.data.user));
     handleClose();
   };
 
