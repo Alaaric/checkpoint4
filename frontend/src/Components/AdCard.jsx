@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import userContext from "../contexts/userContext";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 export default function AdCard({ ad }) {
   const { user } = useContext(userContext);
@@ -18,7 +19,7 @@ export default function AdCard({ ad }) {
       <p>{ad.description}</p>
       {user.id !== ad.user_id && <button>contacter</button>}
       {user.id === ad.user_id && <button>modifier mon annonce</button>}
-      {user.id === ad.user_id && <button>supprimer mon annonce</button>}
+      {user.id === ad.user_id && <DeleteConfirmModal state="ad" ad={ad} />}
     </div>
   );
 }

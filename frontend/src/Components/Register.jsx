@@ -23,12 +23,14 @@ export default function Register() {
     setOpen(false);
   };
   const submit = () => {
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
-      firstname,
-      lastname,
-      email,
-      password,
-    });
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
+        firstname,
+        lastname,
+        email,
+        password,
+      })
+      .catch((err) => console.error(err));
     handleClose();
   };
 

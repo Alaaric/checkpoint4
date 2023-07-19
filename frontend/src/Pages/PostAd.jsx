@@ -16,13 +16,16 @@ export default function PostAd() {
     axios
       .post(`${import.meta.env.VITE_BACKEND_URL}/uploads`, formData)
       .then((res) =>
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/ads`, {
-          name,
-          age,
-          infos,
-          photo: res.data.photoName,
-        })
-      );
+        axios
+          .post(`${import.meta.env.VITE_BACKEND_URL}/ads`, {
+            name,
+            age,
+            infos,
+            photo: res.data.photoName,
+          })
+          .catch((err) => console.error(err))
+      )
+      .catch((err) => console.error(err));
   };
 
   return (

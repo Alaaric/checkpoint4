@@ -8,7 +8,8 @@ export default function AllAds() {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/ads`)
-      .then((res) => setAds(res.data));
+      .then((res) => setAds(res.data))
+      .catch((err) => console.error(err));
   }, []);
 
   return (

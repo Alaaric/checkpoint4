@@ -9,7 +9,8 @@ export default function MyAds() {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`)
-      .then((res) => setUserAds(res.data));
+      .then((res) => setUserAds(res.data))
+      .catch((err) => console.error(err));
   }, []);
 
   return (

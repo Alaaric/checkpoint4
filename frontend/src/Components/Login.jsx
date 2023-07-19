@@ -34,7 +34,8 @@ export default function Login() {
           withCredentials: true,
         }
       )
-      .then((res) => setUser(res.data.user));
+      .then((res) => setUser(res.data.user))
+      .catch((err) => console.error(err));
     handleClose();
   };
 

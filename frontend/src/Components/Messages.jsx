@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import userContext from "../contexts/userContext";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 export default function Messages() {
   const [messages, setMessages] = useState([]);
@@ -9,9 +10,10 @@ export default function Messages() {
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/messages`)
-      .then((res) => setMessages(res.data));
+      .then((res) => setMessages(res.data))
+      .catch((err) => console.error(err));
   }, []);
-  console.log(messages);
+
   return (
     <div className="messages">
       {messages.map((message) => (
@@ -21,6 +23,7 @@ export default function Messages() {
           </p>
           <p>le: {message.date}</p>
           <p>{message.content}</p>
+          <DeleteConfirmModal state="messages" messages={messages} />
         </div>
       ))}
     </div>
