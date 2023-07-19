@@ -60,3 +60,17 @@ INSERT INTO users_ads (user_id, ad_id) VALUES
 (4,5),
 (5,6),
 (5,7);
+
+INSERT INTO messages (content, sender_id, reveiver_id) VALUES
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 1, 2),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 1, 4),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 2, 1),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 2, 3),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 3, 1),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 3, 4),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 3, 5),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 4, 2),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 4, 3),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 5, 3),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 5, 4),
+("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 5, 1);

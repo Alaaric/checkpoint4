@@ -16,7 +16,7 @@ export default function AdCard({ ad }) {
         </div>
       </div>
       <p>{ad.description}</p>
-      {!ad.user_id && <button>contacter</button>}
+      {user.id !== ad.user_id && <button>contacter</button>}
       {user.id === ad.user_id && <button>modifier mon annonce</button>}
       {user.id === ad.user_id && <button>supprimer mon annonce</button>}
     </div>
