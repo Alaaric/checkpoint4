@@ -28,6 +28,26 @@ const readUser = (req, res) => {
     });
 };
 
+const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
+  const { email } = req.body;
+
+  models.users
+    .selectByEmail(email)
+    .then(([users]) => {
+      if (users[0] != null) {
+        req.user = users[0];
+
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 const editUser = (req, res) => {
   const User = req.body;
 
@@ -82,6 +102,7 @@ const destroyUser = (req, res) => {
 module.exports = {
   browseUsers,
   readUser,
+  getUserByEmailWithPasswordAndPassToNext,
   editUser,
   addUser,
   destroyUser,
