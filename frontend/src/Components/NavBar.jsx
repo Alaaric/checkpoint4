@@ -16,7 +16,10 @@ export default function () {
               <Link to="/">Acceuil</Link>
             </li>
             <li>
-              <Link to="/games">Annonces</Link>
+              <Link to="/ads">Annonces</Link>
+            </li>
+            <li>
+              <Link to="/postads">poster une annonce</Link>
             </li>
             <li>
               <button to="/contact">connexion</button>

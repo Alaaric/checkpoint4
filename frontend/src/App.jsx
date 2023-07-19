@@ -12,8 +12,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/games" element={<AllAds />} />
-        <Route path="/contact" element={<PostAd />} />
+        <Route path="/ads" element={<AllAds />} />
+        <Route path="/postads" element={<PostAd />} />
       </Routes>
       <Footer />
     </Router>
