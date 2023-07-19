@@ -23,7 +23,7 @@ CREATE TABLE users_ads(
     user_id INT,
     ad_id INT,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (ad_id) REFERENCES ads(id)
+    FOREIGN KEY (ad_id) REFERENCES ads(id) ON DELETE CASCADE
 );
 
 CREATE TABLE messages(
@@ -51,3 +51,12 @@ INSERT INTO ads (description, name, age, photo) VALUES
 ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur lorem. Diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Senectus et netus et malesuada fames. Vitae justo eget magna fermentum iaculis eu non diam.", "chat 5", 2, "chat5.jpg"),
 ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur lorem. Diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Senectus et netus et malesuada fames. Vitae justo eget magna fermentum iaculis eu non diam.", "chat 6", 1, "chat6.jpg"),
 ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur lorem. Diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Senectus et netus et malesuada fames. Vitae justo eget magna fermentum iaculis eu non diam.", "chat 7", 3, "chat7.jpg");
+
+INSERT INTO users_ads (user_id, ad_id) VALUES
+(1,1),
+(2,2),
+(2,3),
+(3,4),
+(4,5),
+(5,6),
+(5,7);

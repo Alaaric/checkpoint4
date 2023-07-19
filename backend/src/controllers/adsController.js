@@ -13,9 +13,8 @@ const browseAds = (req, res) => {
 };
 
 const browseUsersAds = (req, res) => {
-  const userId = req.body;
   models.ads
-    .findAdsByUserId(userId)
+    .findAdsByUserId(req.params.id)
     .then(([rows]) => {
       res.send(rows);
     })

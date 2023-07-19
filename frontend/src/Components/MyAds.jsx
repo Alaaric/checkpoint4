@@ -1,3 +1,20 @@
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import userContext from "../contexts/userContext";
+import AdCard from "./AdCard";
+
 export default function MyAds() {
-  return <div className="myads"></div>;
+  const { user } = useContext(userContext);
+  const [userAds, setUserAds] = useState();
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user/${user.id}/ads`)
+      .then((res) => setUserAds(res.data));
+  }, []);
+
+  return (
+    <div className="myads">
+      {userAds && userAds.map((ad) => <AdCard key={ad.id} ad={ad} />)}
+    </div>
+  );
 }

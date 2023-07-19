@@ -6,7 +6,7 @@ class AdsManager extends AbstractManager {
   }
   findAdsByUserId(userId) {
     return this.database.query(
-      `SELECT * FROM ${this.table} a
+      `SELECT * FROM ${this.table} a 
       INNER JOIN users_ads ua ON ua.ad_id = a.id
       WHERE ua.user_id = ?`,
       [userId]
