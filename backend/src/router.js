@@ -7,6 +7,7 @@ const upload = multer({ dest: "./public/uploads/" });
 const adsController = require("./controllers/adsController");
 const messagesController = require("./controllers/messagesController");
 const usersController = require("./controllers/usersController");
+const uploadFile = require("./services/uploadFile");
 const {
   hashPassword,
   verifyPassword,
@@ -29,6 +30,8 @@ router.get("/messages/:id", messagesController.readMessage);
 router.post("/messages", messagesController.addMessage);
 router.put("messages/id", messagesController.editMessage);
 router.delete("messages/:id", messagesController.destroyMessage);
+
+router.post("/uploads", upload.single("photo"), uploadFile.postFile);
 
 router.get("/ads", adsController.browseAds);
 router.get("/ads/:id", adsController.readAd);
