@@ -13,7 +13,7 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [open, setOpen] = useState(false);
-  const { setUser, user } = useContext(userContext);
+  const { setUser } = useContext(userContext);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,9 +40,9 @@ export default function Login() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <button variant="outlined" onClick={handleClickOpen}>
         Se connecter
-      </Button>
+      </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Inscription</DialogTitle>
         <DialogContent>
@@ -54,7 +54,7 @@ export default function Login() {
               autoFocus
               margin="dense"
               id="email"
-              label="Adresse email"
+              label="Adresse email *"
               type="email"
               fullWidth
               variant="standard"
@@ -64,7 +64,7 @@ export default function Login() {
               autoFocus
               margin="dense"
               id="password"
-              label="Mot de passe"
+              label="Mot de passe *"
               type="password"
               fullWidth
               variant="standard"

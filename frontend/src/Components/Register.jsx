@@ -70,7 +70,7 @@ export default function Register() {
               autoFocus
               margin="dense"
               id="email"
-              label="Adresse email"
+              label="Adresse email *"
               type="email"
               fullWidth
               variant="standard"
@@ -80,7 +80,7 @@ export default function Register() {
               autoFocus
               margin="dense"
               id="password"
-              label="Mot de passe"
+              label="Mot de passe *"
               type="password"
               fullWidth
               variant="standard"
