@@ -37,11 +37,11 @@ CREATE TABLE messages(
 );
 
 INSERT INTO users (firstname, lastname, email, password, isAdmin) VALUES
-("place", "holder", "place@holder.com", "test", 1),
-("jean", "michel", "jean@michel.com", "test", 0),
-("lore", "m", "lore@m.com", "test", 0),
-("toto", "toto", "toto@toto.com", "test", 0),
-("test", "test", "test@test.com", "test", 0);
+("place", "holder", "place@holder.com", "$argon2id$v=19$m=65536,t=3,p=4$G86ilaHqcIdB1K7i9aW7qw$MY6SjY1R4irmD8qIJCIAZ+R65DslW1Pdb6l7X/FYAxM", 1),
+("jean", "michel", "jean@michel.com", "$argon2id$v=19$m=65536,t=3,p=4$G86ilaHqcIdB1K7i9aW7qw$MY6SjY1R4irmD8qIJCIAZ+R65DslW1Pdb6l7X/FYAxM", 0),
+("lore", "m", "lore@m.com", "$argon2id$v=19$m=65536,t=3,p=4$G86ilaHqcIdB1K7i9aW7qw$MY6SjY1R4irmD8qIJCIAZ+R65DslW1Pdb6l7X/FYAxM", 0),
+("toto", "toto", "toto@toto.com", "$argon2id$v=19$m=65536,t=3,p=4$G86ilaHqcIdB1K7i9aW7qw$MY6SjY1R4irmD8qIJCIAZ+R65DslW1Pdb6l7X/FYAxM", 0),
+("test", "test", "test@test.com", "$argon2id$v=19$m=65536,t=3,p=4$G86ilaHqcIdB1K7i9aW7qw$MY6SjY1R4irmD8qIJCIAZ+R65DslW1Pdb6l7X/FYAxM", 0);
 
 INSERT INTO ads (description, name, age, photo) VALUES 
 ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum varius duis at consectetur lorem. Diam sollicitudin tempor id eu nisl nunc mi ipsum faucibus. Senectus et netus et malesuada fames. Vitae justo eget magna fermentum iaculis eu non diam.","chat 1", 5, "chat1.jpg"),
