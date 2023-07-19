@@ -30,9 +30,14 @@ export default function () {
               </li>
             )}
             {user ? (
-              <li>
-                <Disconnect />
-              </li>
+              <>
+                <li>
+                  <Link to="/account">Mon compte</Link>
+                </li>
+                <li>
+                  <Disconnect />
+                </li>
+              </>
             ) : (
               <li>
                 <Login />
