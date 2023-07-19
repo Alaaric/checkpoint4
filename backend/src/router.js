@@ -34,6 +34,7 @@ router.delete("messages/:id", messagesController.destroyMessage);
 router.post("/uploads", upload.single("photo"), uploadFile.postFile);
 
 router.get("/ads", adsController.browseAds);
+router.get("/user/ads", adsController.browseUsersAds);
 router.get("/ads/:id", adsController.readAd);
 router.post("/ads", adsController.addAd);
 router.put("ads/id", adsController.editAd);

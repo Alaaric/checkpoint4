@@ -12,6 +12,19 @@ const browseAds = (req, res) => {
     });
 };
 
+const browseUsersAds = (req, res) => {
+  const userId = req.body;
+  models.ads
+    .findAdsByUserId(userId)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const readAd = (req, res) => {
   models.ads
     .find(req.params.id)
@@ -81,6 +94,7 @@ const destroyAd = (req, res) => {
 
 module.exports = {
   browseAds,
+  browseUsersAds,
   readAd,
   editAd,
   addAd,
