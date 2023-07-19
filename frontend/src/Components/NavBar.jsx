@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Login from "./Login";
 
 export default function () {
   return (
@@ -22,7 +23,7 @@ export default function () {
               <Link to="/postads">poster une annonce</Link>
             </li>
             <li>
-              <button to="/contact">connexion</button>
+              <Login />
             </li>
           </ul>
         </label>

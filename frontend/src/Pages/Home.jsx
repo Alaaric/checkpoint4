@@ -1,3 +1,5 @@
+import Register from "../Components/Register";
+
 export default function Home() {
   return (
     <div className="home">
@@ -10,7 +12,7 @@ export default function Home() {
         inscrivez vous et trouvez de ce pas une personne qui pourra prendre soin
         de votre animal
       </p>
-      <button>s'inscrire</button>
+      <Register />
     </div>
   );
 }
