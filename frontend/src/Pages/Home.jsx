@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import Register from "../Components/Register";
+import userContext from "../contexts/userContext";
 
 export default function Home() {
+  const { user } = useContext(userContext);
+
   return (
     <div className="home">
       <h1>BIENVENUE SUR AD{"{OPTION}"}</h1>
@@ -12,7 +16,7 @@ export default function Home() {
         inscrivez vous et trouvez de ce pas une personne qui pourra prendre soin
         de votre animal
       </p>
-      <Register />
+      {!user && <Register />}
     </div>
   );
 }
