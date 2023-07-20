@@ -17,9 +17,12 @@ export default function AdCard({ ad }) {
         </div>
       </div>
       <p>{ad.description}</p>
-      {user.id !== ad.user_id && <button>contacter</button>}
-      {user.id === ad.user_id && <button>modifier mon annonce</button>}
-      {user.id === ad.user_id && <DeleteConfirmModal state="ad" ad={ad} />}
+
+      {user && user.id !== ad.user_id && <button>contacter</button>}
+      {user && user.id === ad.user_id && <button>modifier mon annonce</button>}
+      {user && user.id === ad.user_id && (
+        <DeleteConfirmModal state="ad" ad={ad} />
+      )}
     </div>
   );
 }

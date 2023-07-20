@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import userContext from "../contexts/userContext";
 import axios from "axios";
 import Dialog from "@mui/material/Dialog";
@@ -6,9 +6,16 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 
-export default function DeleteConfirmModal({ state, ad, messages }) {
+export default function DeleteConfirmModal({
+  state,
+  ad,
+  message,
+  getMessages,
+  getMyAds,
+}) {
   const { user, setUser } = useContext(userContext);
   const [open, setOpen] = useState(false);
+  const [display, setDisplay] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,39 +24,66 @@ export default function DeleteConfirmModal({ state, ad, messages }) {
   const handleClose = () => {
     setOpen(false);
   };
-  const deleteAccount = () => {
-    axios
-      .delete(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}`)
-      .catch((err) => console.error(err));
-    setUser(null);
-    handleClose();
+
+  const handleDelete = (state) => {
+    switch (state) {
+      case "messages":
+        axios
+          .delete(`${import.meta.env.VITE_BACKEND_URL}/messages/${message.id}`)
+          .catch((err) => console.error(err));
+        handleClose();
+        setTimeout(() => {
+          getMessages;
+        }, 200);
+        break;
+      case "account":
+        axios
+          .delete(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}`)
+          .catch((err) => console.error(err));
+        setUser(null);
+        handleClose();
+        break;
+      case "ad":
+        axios
+          .delete(`${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`)
+          .catch((err) => console.error(err));
+        handleClose();
+        setTimeout(() => {
+          getMyAds;
+        }, 200);
+        break;
+      default:
+        console.info("invalid value");
+        break;
+    }
   };
 
-  const deleteAd = () => {
-    axios
-      .delete(`${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`)
-      .catch((err) => console.error(err));
-    setUser(null);
-    handleClose();
-  };
-
-  const deleteMessage = () => {
-    axios
-      .delete(`${import.meta.env.VITE_BACKEND_URL}/messages/${messages.id}`)
-      .catch((err) => console.error(err));
-    setUser(null);
-    handleClose();
-  };
+  useEffect(() => {
+    switch (state) {
+      case "messages":
+        setDisplay("ce message");
+        break;
+      case "account":
+        setDisplay("votre compte");
+        break;
+      case "ad":
+        setDisplay("cette annonce");
+        break;
+      default:
+        console.info("invalid value");
+        break;
+    }
+  }, []);
 
   return (
     <>
       <button type="button" onClick={handleClickOpen}>
-        supprimer mon compte
+        supprimer {display}
       </button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Êtes-vous sûr de vouloir supprimer?</DialogTitle>
+        <DialogTitle>Êtes-vous sûr de vouloir supprimer {display}?</DialogTitle>
         <DialogActions>
-          <Button type="button" onClick={deleteAccount}>
+          <Button type="button" onClick={() => handleDelete(state)}>
             Oui
           </Button>
           <Button onClick={handleClose}>Non</Button>
