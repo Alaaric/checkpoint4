@@ -2,7 +2,7 @@ const models = require("../models");
 
 const browseAds = (req, res) => {
   models.ads
-    .findAll()
+    .findAllWithUserInfo()
     .then(([rows]) => {
       res.send(rows);
     })
@@ -66,8 +66,22 @@ const addAd = (req, res) => {
   models.ads
     .insert(Ad)
     .then(([result]) => {
+      res.status(201).json([result]);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const addUserAd = (req, res) => {
+  const UserAd = req.body;
+
+  models.ads
+    .insertJoinTable(UserAd)
+    .then(([result]) => {
       console.info(result);
-      res.sendStatus(201);
+      res.status(201);
     })
     .catch((err) => {
       console.error(err);
@@ -97,5 +111,6 @@ module.exports = {
   readAd,
   editAd,
   addAd,
+  addUserAd,
   destroyAd,
 };

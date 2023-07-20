@@ -23,10 +23,16 @@ export default function Profil() {
 
   const postUpdatedUserInfos = () => {
     axios
-      .put(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}`, {
-        updatedUserInfos,
-        password: newPassword,
-      })
+      .put(
+        `${import.meta.env.VITE_BACKEND_URL}/users/${user.id}`,
+        {
+          updatedUserInfos,
+          password: newPassword,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .catch((err) => console.error(err));
   };
   return (

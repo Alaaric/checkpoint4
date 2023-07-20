@@ -31,9 +31,9 @@ CREATE TABLE messages(
     creation_date DATE DEFAULT (CURRENT_DATE),
     content TEXT,
     sender_id INT,
-    reveiver_id INT,
+    receiver_id INT,
     FOREIGN KEY (sender_id ) REFERENCES users(id),
-    FOREIGN KEY (reveiver_id) REFERENCES users(id)
+    FOREIGN KEY (receiver_id) REFERENCES users(id)
 );
 
 INSERT INTO users (firstname, lastname, email, password, isAdmin) VALUES
@@ -61,7 +61,7 @@ INSERT INTO users_ads (user_id, ad_id) VALUES
 (5,6),
 (5,7);
 
-INSERT INTO messages (content, sender_id, reveiver_id) VALUES
+INSERT INTO messages (content, sender_id, receiver_id) VALUES
 ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 1, 2),
 ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 1, 4),
 ("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus elementum sagittis vitae et leo duis ut. Nulla aliquet enim tortor at auctor urna nunc.", 2, 1),
