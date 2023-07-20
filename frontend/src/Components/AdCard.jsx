@@ -6,7 +6,6 @@ import MessageForm from "./messageForm";
 
 export default function AdCard({ ad, setUserAds }) {
   const { user } = useContext(userContext);
-  console.log(user);
   return (
     <div className="ad">
       <div className="info">
