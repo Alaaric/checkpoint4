@@ -2,9 +2,11 @@ import { useContext } from "react";
 import userContext from "../contexts/userContext";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 import UpdateAd from "./UpdateAd";
+import MessageForm from "./messageForm";
 
 export default function AdCard({ ad, setUserAds }) {
   const { user } = useContext(userContext);
+
   return (
     <div className="ad">
       <div className="info">
@@ -19,7 +21,7 @@ export default function AdCard({ ad, setUserAds }) {
       </div>
       <p>{ad.description}</p>
 
-      {user && user.id !== ad.user_id && <button>contacter</button>}
+      {user && user.id !== ad.user_id && <MessageForm ad={ad} />}
       {user && user.id === ad.user_id && (
         <UpdateAd ad={ad} setUserAds={setUserAds} />
       )}

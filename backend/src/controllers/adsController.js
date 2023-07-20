@@ -2,7 +2,7 @@ const models = require("../models");
 
 const browseAds = (req, res) => {
   models.ads
-    .findAll()
+    .findAllWithUserInfo()
     .then(([rows]) => {
       res.send(rows);
     })
