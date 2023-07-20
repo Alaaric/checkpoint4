@@ -28,6 +28,13 @@ class AdsManager extends AbstractManager {
     );
   }
 
+  insertJoinTable(userAd) {
+    return this.database.query(
+      `INSERT INTO users_ads (user_id, ad_id) VALUES (?, ?)`,
+      [userAd.user_id, userAd.ad_id]
+    );
+  }
+
   update(ad) {
     return this.database.query(
       `UPDATE ${this.table} SET name = COALESCE(?, name), age = COALESCE(?, age), description = COALESCE(?, description), photo = COALESCE(?, photo) WHERE id = ?`,

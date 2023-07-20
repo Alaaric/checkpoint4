@@ -38,6 +38,7 @@ router.get("/ads", adsController.browseAds);
 router.get("/users/:id/ads", adsController.browseUsersAds);
 router.get("/ads/:id", adsController.readAd);
 router.post("/ads", adsController.addAd);
+router.post("/ads/jointable", adsController.addUserAd);
 router.put("/ads/:id", adsController.editAd);
 router.delete("/ads/:id", adsController.destroyAd);
 
