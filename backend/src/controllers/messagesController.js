@@ -11,6 +11,17 @@ const browseMessages = (req, res) => {
       res.sendStatus(500);
     });
 };
+const browseMessagesForOneUser = (req, res) => {
+  models.messages
+    .findMessageForOneUserById(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 const readMessage = (req, res) => {
   models.messages
@@ -81,6 +92,7 @@ const destroyMessage = (req, res) => {
 
 module.exports = {
   browseMessages,
+  browseMessagesForOneUser,
   readMessage,
   editMessage,
   addMessage,
