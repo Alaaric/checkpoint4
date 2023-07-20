@@ -22,14 +22,14 @@ router.post(
 router.get("/users", usersController.browseUsers);
 router.get("/users/:id", usersController.readUser);
 router.post("/register", hashPassword, usersController.addUser);
-router.put("/users/id", usersController.editUser);
+router.put("/users/:id", hashPassword, usersController.editUser);
 router.delete("/users/:id", usersController.destroyUser);
 
 router.get("/users/:id/messages", messagesController.browseMessagesForOneUser);
 router.get("/messages", messagesController.browseMessages);
 router.get("/messages/:id", messagesController.readMessage);
 router.post("/messages", messagesController.addMessage);
-router.put("/messages/id", messagesController.editMessage);
+router.put("/messages/:id", messagesController.editMessage);
 router.delete("/messages/:id", messagesController.destroyMessage);
 
 router.post("/uploads", upload.single("photo"), uploadFile.postFile);
@@ -38,7 +38,7 @@ router.get("/ads", adsController.browseAds);
 router.get("/users/:id/ads", adsController.browseUsersAds);
 router.get("/ads/:id", adsController.readAd);
 router.post("/ads", adsController.addAd);
-router.put("/ads/id", adsController.editAd);
+router.put("/ads/:id", adsController.editAd);
 router.delete("/ads/:id", adsController.destroyAd);
 
 module.exports = router;

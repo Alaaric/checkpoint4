@@ -49,8 +49,8 @@ const getUserByEmailWithPasswordAndPassToNext = (req, res, next) => {
 };
 
 const editUser = (req, res) => {
-  const User = req.body;
-
+  const User = req.body.updatedUserInfos;
+  User.password = req.body.hashedpassword;
   User.id = parseInt(req.params.id, 10);
 
   models.users
