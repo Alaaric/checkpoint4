@@ -17,7 +17,7 @@ export default function MyAds() {
   }, []);
 
   return (
-    <div className="myads">
+    <div className="allAds">
       {userAds &&
         userAds.map((ad) => (
           <AdCard key={ad.id} ad={ad} setUserAds={setUserAds} />

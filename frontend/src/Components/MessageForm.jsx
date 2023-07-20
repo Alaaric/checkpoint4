@@ -39,9 +39,9 @@ export default function MessageForm({ ad }) {
 
   return (
     <div>
-      <button variant="outlined" onClick={handleClickOpen}>
+      <Button size="small" variant="outlined" onClick={handleClickOpen}>
         Contacter
-      </button>
+      </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Message</DialogTitle>
         <DialogContent>

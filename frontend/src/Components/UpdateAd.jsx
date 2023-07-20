@@ -1,6 +1,7 @@
 import { useState, useRef, useContext } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import userContext from "../contexts/userContext";
 
@@ -97,7 +98,9 @@ export default function UpdateAd({ ad, setUserAds }) {
 
   return (
     <div>
-      <button onClick={handleOpen}>Modifier mon annonce</button>
+      <Button size="small" onClick={handleOpen}>
+        Modifier mon annonce
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
