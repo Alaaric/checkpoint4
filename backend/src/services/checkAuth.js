@@ -19,7 +19,7 @@ const hashPassword = (req, res, next) => {
     })
     .catch((err) => {
       console.error(err);
-      res.sendStatus(500).send("Error saving user");
+      res.status(500).send("Error saving user");
     });
 };
 
@@ -56,7 +56,7 @@ const verifyToken = (req, res, next) => {
   if (req.cookies) {
     jwt.verify(
       req.cookies.user_token,
-      process.env.TOKEN_SECRET,
+      process.env.JWT_SECRET,
       (err, decode) => {
         if (err) {
           res.status(401).send("connectez vous pour acceder au site");

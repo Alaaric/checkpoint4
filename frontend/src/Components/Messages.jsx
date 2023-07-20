@@ -9,7 +9,9 @@ export default function Messages() {
 
   const getMessages = () => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/messages`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/messages`, {
+        withCredentials: true,
+      })
       .then((res) => setMessages(res.data))
       .catch((err) => console.error(err));
   };

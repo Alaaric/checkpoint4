@@ -45,32 +45,50 @@ export default function UpdateAd({ ad, setUserAds }) {
       const formData = new FormData();
       formData.append("photo", inputRef.current.files[0]);
       axios
-        .post(`${import.meta.env.VITE_BACKEND_URL}/uploads`, formData)
+        .post(`${import.meta.env.VITE_BACKEND_URL}/uploads`, formData, {
+          withCredentials: true,
+        })
         .then((res) =>
           axios
-            .put(`${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`, {
-              updatedAdInfos,
-              photo: res.data.photoName,
-            })
+            .put(
+              `${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`,
+              {
+                updatedAdInfos,
+                photo: res.data.photoName,
+              },
+              {
+                withCredentials: true,
+              }
+            )
             .catch((err) => console.error(err))
         )
         .catch((err) => console.error(err));
       setTimeout(() => {
         axios
-          .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`)
+          .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`, {
+            withCredentials: true,
+          })
           .then((res) => setUserAds(res.data))
           .catch((err) => console.error(err));
       }, 200);
     } else {
       console.log("test2");
       axios
-        .put(`${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`, {
-          updatedAdInfos,
-        })
+        .put(
+          `${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`,
+          {
+            updatedAdInfos,
+          },
+          {
+            withCredentials: true,
+          }
+        )
         .catch((err) => console.error(err));
       setTimeout(() => {
         axios
-          .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`)
+          .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`, {
+            withCredentials: true,
+          })
           .then((res) => setUserAds(res.data))
           .catch((err) => console.error(err));
       }, 200);

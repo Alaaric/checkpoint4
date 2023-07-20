@@ -29,7 +29,12 @@ export default function DeleteConfirmModal({
     switch (state) {
       case "messages":
         axios
-          .delete(`${import.meta.env.VITE_BACKEND_URL}/messages/${message.id}`)
+          .delete(
+            `${import.meta.env.VITE_BACKEND_URL}/messages/${message.id}`,
+            {
+              withCredentials: true,
+            }
+          )
           .catch((err) => console.error(err));
         handleClose();
         setTimeout(() => {
@@ -38,19 +43,25 @@ export default function DeleteConfirmModal({
         break;
       case "account":
         axios
-          .delete(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}`)
+          .delete(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}`, {
+            withCredentials: true,
+          })
           .catch((err) => console.error(err));
         setUser(null);
         handleClose();
         break;
       case "ad":
         axios
-          .delete(`${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`)
+          .delete(`${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`, {
+            withCredentials: true,
+          })
           .catch((err) => console.error(err));
         handleClose();
         setTimeout(() => {
           axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`)
+            .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`, {
+              withCredentials: true,
+            })
             .then((res) => setUserAds(res.data))
             .catch((err) => console.error(err));
         }, 200);

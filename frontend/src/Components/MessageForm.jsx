@@ -22,11 +22,17 @@ export default function MessageForm({ ad }) {
 
   const sendMessage = () => {
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/messages`, {
-        content: message,
-        sender_id: user.id,
-        receiver_id: ad.author_id,
-      })
+      .post(
+        `${import.meta.env.VITE_BACKEND_URL}/messages`,
+        {
+          content: message,
+          sender_id: user.id,
+          receiver_id: ad.author_id,
+        },
+        {
+          withCredentials: true,
+        }
+      )
       .catch((err) => console.error(err));
     handleClose();
   };
