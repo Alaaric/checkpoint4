@@ -11,7 +11,7 @@ export default function DeleteConfirmModal({
   ad,
   message,
   getMessages,
-  getMyAds,
+  setUserAds,
 }) {
   const { user, setUser } = useContext(userContext);
   const [open, setOpen] = useState(false);
@@ -49,7 +49,10 @@ export default function DeleteConfirmModal({
           .catch((err) => console.error(err));
         handleClose();
         setTimeout(() => {
-          getMyAds;
+          axios
+            .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/ads`)
+            .then((res) => setUserAds(res.data))
+            .catch((err) => console.error(err));
         }, 200);
         break;
       default:

@@ -4,7 +4,7 @@ import userContext from "../contexts/userContext";
 import axios from "axios";
 
 export default function Profil() {
-  const { user, setUser } = useContext(userContext);
+  const { user } = useContext(userContext);
   const [newPassword, setNewPassword] = useState(null);
   const [updatedUserInfos, setUpdatedUserInfos] = useState({
     firstname: null,
@@ -38,7 +38,7 @@ export default function Profil() {
           <input
             type="text"
             name="lastname"
-            placeholder={user.lastname}
+            placeholder={user && user.lastname}
             onChange={update}
           />
         </label>
@@ -47,7 +47,7 @@ export default function Profil() {
           <input
             type="text"
             name="firstname"
-            placeholder={user.firstname}
+            placeholder={user && user.firstname}
             onChange={update}
           />
         </label>
@@ -56,7 +56,7 @@ export default function Profil() {
           <input
             type="email"
             name="email"
-            placeholder={user.email}
+            placeholder={user && user.email}
             onChange={update}
           />
         </label>

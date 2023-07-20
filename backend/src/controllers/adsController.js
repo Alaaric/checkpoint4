@@ -41,8 +41,8 @@ const readAd = (req, res) => {
 };
 
 const editAd = (req, res) => {
-  const Ad = req.body;
-
+  const Ad = req.body.updatedAdInfos;
+  Ad.photo = req.body.photo;
   Ad.id = parseInt(req.params.id, 10);
 
   models.ads
