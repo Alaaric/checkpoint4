@@ -4,6 +4,14 @@ class AdsManager extends AbstractManager {
   constructor() {
     super({ table: "ads" });
   }
+
+  findAllWithUserInfo() {
+    return this.database
+      .query(`select a.id id, a.creation_date, a.description, a.name , a.age, a.photo, u.id author_id, u.email, u.firstname, u.lastname from  ${this.table} a
+    INNER JOIN users_ads ua ON ua.ad_id = a.id 
+    INNER JOIN users u ON u.id = ua.user_id`);
+  }
+
   findAdsByUserId(userId) {
     return this.database.query(
       `SELECT * FROM ${this.table} a 
