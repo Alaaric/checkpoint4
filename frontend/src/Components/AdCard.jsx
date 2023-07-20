@@ -6,7 +6,7 @@ import MessageForm from "./messageForm";
 
 export default function AdCard({ ad, setUserAds }) {
   const { user } = useContext(userContext);
-  console.log(ad);
+  console.log(user);
   return (
     <div className="ad">
       <div className="info">
@@ -27,7 +27,7 @@ export default function AdCard({ ad, setUserAds }) {
       {user && user.id === ad.user_id && (
         <UpdateAd ad={ad} setUserAds={setUserAds} />
       )}
-      {user && user.id === ad.user_id && (
+      {user && (user.id === ad.user_id || user.isAdmin === 1) && (
         <DeleteConfirmModal state="ad" ad={ad} setUserAds={setUserAds} />
       )}
     </div>
