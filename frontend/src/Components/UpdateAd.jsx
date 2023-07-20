@@ -98,7 +98,7 @@ export default function UpdateAd({ ad, setUserAds }) {
 
   return (
     <div>
-      <Button size="small" onClick={handleOpen}>
+      <Button size="small" variant="outlined" onClick={handleOpen}>
         Modifier mon annonce
       </Button>
       <Modal
@@ -147,7 +147,9 @@ export default function UpdateAd({ ad, setUserAds }) {
               ></textarea>
             </label>
 
-            <button type="submit">Valider</button>
+            <Button size="small" variant="outlined" type="submit">
+              Valider
+            </Button>
           </form>
         </Box>
       </Modal>

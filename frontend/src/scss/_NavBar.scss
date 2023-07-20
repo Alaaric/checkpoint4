@@ -38,6 +38,11 @@ header {
           color: $primary-text-color;
           text-decoration: none;
         }
+        button {
+          border: none;
+          background-color: transparent;
+          color: $primary-text-color;
+        }
       }
     }
   }

@@ -54,8 +54,12 @@ export default function MessageForm({ ad }) {
           ></textarea>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>annuler</Button>
-          <Button onClick={sendMessage}>Envoyer</Button>
+          <Button size="small" variant="outlined" onClick={handleClose}>
+            annuler
+          </Button>
+          <Button size="small" variant="outlined" onClick={sendMessage}>
+            Envoyer
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

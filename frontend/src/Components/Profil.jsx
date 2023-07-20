@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import DeleteConfirmModal from "./DeleteConfirmModal";
 import userContext from "../contexts/userContext";
 import axios from "axios";
+import Button from "@mui/material/Button";
 
 export default function Profil() {
   const { user } = useContext(userContext);
@@ -36,49 +37,58 @@ export default function Profil() {
       .catch((err) => console.error(err));
   };
   return (
-    <div className="profil">
-      <h2>modifier mes information</h2>
-      <form onSubmit={(e) => postUpdatedUserInfos}>
-        <label htmlFor="">
-          nom:
-          <input
-            type="text"
-            name="lastname"
-            placeholder={user && user.lastname}
-            onChange={update}
-          />
-        </label>
-        <label htmlFor="">
-          prénom:
-          <input
-            type="text"
-            name="firstname"
-            placeholder={user && user.firstname}
-            onChange={update}
-          />
-        </label>
-        <label htmlFor="">
-          email :
-          <input
-            type="email"
-            name="email"
-            placeholder={user && user.email}
-            onChange={update}
-          />
-        </label>
-        mot de passe:
-        <label htmlFor="">
-          <input
-            type="password"
-            name="password"
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-        </label>
-      </form>
-      <button type="submit" onClick={postUpdatedUserInfos}>
-        appliquer les changements
-      </button>
-      <DeleteConfirmModal state="account" />
+    <div className="profile-page">
+      <div className="profil">
+        <h2>Modifier mes information</h2>
+        <form onSubmit={(e) => postUpdatedUserInfos}>
+          <label htmlFor="">
+            <p>Nom:</p>
+            <input
+              type="text"
+              name="lastname"
+              placeholder={user && user.lastname}
+              onChange={update}
+            />
+          </label>
+          <label htmlFor="">
+            <p>Prénom:</p>
+            <input
+              type="text"
+              name="firstname"
+              placeholder={user && user.firstname}
+              onChange={update}
+            />
+          </label>
+          <label htmlFor="">
+            <p>Email :</p>
+            <input
+              type="email"
+              name="email"
+              placeholder={user && user.email}
+              onChange={update}
+            />
+          </label>
+          <label htmlFor="">
+            <p>Mot de passe:</p>
+            <input
+              type="password"
+              name="password"
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+          </label>
+        </form>
+        <div className="buttons">
+          <Button
+            size="small"
+            variant="outlined"
+            type="submit"
+            onClick={postUpdatedUserInfos}
+          >
+            Appliquer les changements
+          </Button>
+          <DeleteConfirmModal state="account" />
+        </div>
+      </div>
     </div>
   );
 }

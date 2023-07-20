@@ -26,7 +26,7 @@ export default function () {
             </li>
             {user && (
               <li>
-                <Link to="/postads">poster une annonce</Link>
+                <Link to="/postads">Poster une annonce</Link>
               </li>
             )}
             {user ? (

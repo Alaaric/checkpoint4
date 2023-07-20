@@ -91,16 +91,28 @@ export default function DeleteConfirmModal({
 
   return (
     <>
-      <Button size="small" type="button" onClick={handleClickOpen}>
-        supprimer {display}
+      <Button
+        size="small"
+        variant="outlined"
+        type="button"
+        onClick={handleClickOpen}
+      >
+        Supprimer {display}
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Êtes-vous sûr de vouloir supprimer {display}?</DialogTitle>
         <DialogActions>
-          <Button type="button" onClick={() => handleDelete(state)}>
+          <Button
+            type="button"
+            size="small"
+            variant="outlined"
+            onClick={() => handleDelete(state)}
+          >
             Oui
           </Button>
-          <Button onClick={handleClose}>Non</Button>
+          <Button size="small" variant="outlined" onClick={handleClose}>
+            Non
+          </Button>
         </DialogActions>
       </Dialog>
     </>

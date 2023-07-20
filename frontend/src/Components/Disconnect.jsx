@@ -29,10 +29,17 @@ export default function Disconnect() {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Voulez-vous vraiment vous déconnecter?</DialogTitle>
         <DialogContent>
-          <Button type="submit" onClick={submit}>
+          <Button
+            size="small"
+            variant="outlined"
+            type="submit"
+            onClick={submit}
+          >
             Oui
           </Button>
-          <Button onClick={handleClose}>Non</Button>
+          <Button size="small" variant="outlined" onClick={handleClose}>
+            Non
+          </Button>
         </DialogContent>
       </Dialog>
     </div>

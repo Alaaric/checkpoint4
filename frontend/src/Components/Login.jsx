@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -14,6 +15,7 @@ export default function Login() {
   const [password, setPassword] = useState();
   const [open, setOpen] = useState(false);
   const { setUser } = useContext(userContext);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -37,6 +39,7 @@ export default function Login() {
       .then((res) => setUser(res.data.user))
       .catch((err) => console.error(err));
     handleClose();
+    navigate("/ads");
   };
 
   return (
@@ -74,8 +77,15 @@ export default function Login() {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>annuler</Button>
-          <Button type="submit" onClick={submit}>
+          <Button size="small" variant="outlined" onClick={handleClose}>
+            annuler
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            type="submit"
+            onClick={submit}
+          >
             Se connecter
           </Button>
         </DialogActions>
