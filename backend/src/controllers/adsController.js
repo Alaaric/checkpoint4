@@ -12,6 +12,18 @@ const browseAds = (req, res) => {
     });
 };
 
+const browseUsersAds = (req, res) => {
+  models.ads
+    .findAdsByUserId(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const readAd = (req, res) => {
   models.ads
     .find(req.params.id)
@@ -29,8 +41,8 @@ const readAd = (req, res) => {
 };
 
 const editAd = (req, res) => {
-  const Ad = req.body;
-
+  const Ad = req.body.updatedAdInfos;
+  Ad.photo = req.body.photo;
   Ad.id = parseInt(req.params.id, 10);
 
   models.ads
@@ -81,6 +93,7 @@ const destroyAd = (req, res) => {
 
 module.exports = {
   browseAds,
+  browseUsersAds,
   readAd,
   editAd,
   addAd,

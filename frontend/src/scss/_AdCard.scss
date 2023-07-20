@@ -1,0 +1,14 @@
+@import "./Variables";
+
+.ad {
+  border: solid 1px white;
+  width: 25rem;
+  padding: 1rem;
+  .info {
+    display: flex;
+    gap: 1rem;
+    img {
+      width: 15rem;
+    }
+  }
+}
