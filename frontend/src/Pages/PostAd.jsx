@@ -16,20 +16,34 @@ export default function PostAd() {
     formData.append("photo", inputRef.current.files[0]);
 
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/uploads`, formData)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/uploads`, formData, {
+        withCredentials: true,
+      })
       .then((res) =>
         axios
-          .post(`${import.meta.env.VITE_BACKEND_URL}/ads`, {
-            name,
-            age,
-            infos,
-            photo: res.data.photoName,
-          })
+          .post(
+            `${import.meta.env.VITE_BACKEND_URL}/ads`,
+            {
+              name,
+              age,
+              infos,
+              photo: res.data.photoName,
+            },
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) =>
-            axios.post(`${import.meta.env.VITE_BACKEND_URL}/ads/jointable`, {
-              user_id: user.id,
-              ad_id: res.data[0].insertId,
-            })
+            axios.post(
+              `${import.meta.env.VITE_BACKEND_URL}/ads/jointable`,
+              {
+                user_id: user.id,
+                ad_id: res.data[0].insertId,
+              },
+              {
+                withCredentials: true,
+              }
+            )
           )
           .catch((err) => console.error(err))
       )
