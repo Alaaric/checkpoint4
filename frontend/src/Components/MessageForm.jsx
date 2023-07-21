@@ -42,14 +42,11 @@ export default function MessageForm({ ad }) {
       <Button size="small" variant="outlined" onClick={handleClickOpen}>
         Contacter
       </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} className="message-form">
         <DialogTitle>Message</DialogTitle>
         <DialogContent>
           <textarea
             name="message"
-            id=""
-            cols="30"
-            rows="10"
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </DialogContent>
