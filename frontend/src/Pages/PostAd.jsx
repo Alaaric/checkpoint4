@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useContext, useRef, useState } from "react";
 import userContext from "../contexts/userContext";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function PostAd() {
   const [name, setName] = useState();
@@ -8,6 +10,7 @@ export default function PostAd() {
   const [infos, setInfos] = useState();
   const inputRef = useRef();
   const { user } = useContext(userContext);
+  const navigate = useNavigate();
 
   const submit = (e) => {
     e.preventDefault();
@@ -48,15 +51,18 @@ export default function PostAd() {
           .catch((err) => console.error(err))
       )
       .catch((err) => console.error(err));
+    setTimeout(() => {
+      navigate("/ads");
+    }, 200);
   };
 
   return (
     <div className="postAd">
       <form encType="multipart/form-data" onSubmit={submit}>
         <div className="input">
-          <div>
+          <div className="text">
             <label htmlFor="name">
-              nom:
+              <p> Nom:</p>
               <input
                 type="text"
                 id="name"
@@ -66,7 +72,7 @@ export default function PostAd() {
               />
             </label>
             <label htmlFor="age">
-              age:
+              <p>Age:</p>
               <input
                 type="number"
                 min={0}
@@ -77,13 +83,13 @@ export default function PostAd() {
               />
             </label>
           </div>
-          <label htmlFor="photo">
-            photo:
+          <label htmlFor="photo" className="custom-file-input">
+            Choisissez une photo
             <input type="file" id="photo" name="photo" ref={inputRef} />
           </label>
         </div>
         <label htmlFor="description">
-          infos:
+          <p>Infos:</p>
           <textarea
             name="description"
             id="description"
@@ -91,7 +97,9 @@ export default function PostAd() {
           ></textarea>
         </label>
 
-        <button type="submit">poster mon annonce</button>
+        <Button size="small" variant="outlined" type="submit">
+          Poster mon annonce
+        </Button>
       </form>
     </div>
   );

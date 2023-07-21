@@ -38,12 +38,30 @@ header {
           color: $primary-text-color;
           text-decoration: none;
         }
+        button {
+          border: none;
+          background-color: transparent;
+          color: $primary-text-color;
+        }
       }
     }
   }
 }
+.connection {
+  button {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+}
 
 @media screen and (max-width: 760px) {
+  .connection {
+    button {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+
   header {
     .navbar {
       label {
@@ -146,27 +164,11 @@ header {
           border-radius: 20px;
         }
         a:hover {
-          animation-name: example;
           animation-duration: 0.25s;
           border-left: 8px solid $primary-text-color;
           box-shadow: 0 14px 28px $neon-color, 0 10px 10px $neon-color;
         }
       }
     }
-  }
-}
-
-@keyframes example {
-  0% {
-    border-left: 2px solid #ffffff;
-  }
-  25% {
-    border-left: 3px solid #ffe6e6;
-  }
-  50% {
-    border-left: 4px solid #ff8080;
-  }
-  100% {
-    border-left: 5px solid #ff0000;
   }
 }

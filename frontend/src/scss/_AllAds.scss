@@ -3,6 +3,7 @@
 .allAds {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 4rem;
   color: $primary-text-color;
   margin-bottom: 2rem;

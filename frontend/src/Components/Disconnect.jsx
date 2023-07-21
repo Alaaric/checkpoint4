@@ -5,7 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import userContext from "../contexts/userContext";
 
-export default function Disconnect() {
+export default function Disconnect({ handleDisplayMenu }) {
   const [open, setOpen] = useState(false);
   const { setUser } = useContext(userContext);
 
@@ -15,6 +15,7 @@ export default function Disconnect() {
 
   const handleClose = () => {
     setOpen(false);
+    handleDisplayMenu();
   };
   const submit = () => {
     setUser(null);
@@ -22,17 +23,23 @@ export default function Disconnect() {
   };
 
   return (
-    <div>
-      <button variant="outlined" onClick={handleClickOpen}>
-        Se déconnecter
-      </button>
+    <div className="connection">
+      <button onClick={handleClickOpen}>Se déconnecter</button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Voulez-vous vraiment vous déconnecter?</DialogTitle>
         <DialogContent>
-          <Button type="submit" onClick={submit}>
+          <Button
+            size="small"
+            variant="outlined"
+            type="submit"
+            onClick={submit}
+            style={{ marginRight: 10 }}
+          >
             Oui
           </Button>
-          <Button onClick={handleClose}>Non</Button>
+          <Button size="small" variant="outlined" onClick={handleClose}>
+            Non
+          </Button>
         </DialogContent>
       </Dialog>
     </div>
