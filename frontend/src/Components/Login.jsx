@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -9,11 +10,12 @@ import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
 import userContext from "../contexts/userContext";
 
-export default function Login() {
+export default function Login({ handleDisplayMenu }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [open, setOpen] = useState(false);
   const { setUser } = useContext(userContext);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -21,6 +23,7 @@ export default function Login() {
 
   const handleClose = () => {
     setOpen(false);
+    handleDisplayMenu();
   };
   const submit = () => {
     axios
@@ -37,13 +40,12 @@ export default function Login() {
       .then((res) => setUser(res.data.user))
       .catch((err) => console.error(err));
     handleClose();
+    navigate("/ads");
   };
 
   return (
-    <div>
-      <button variant="outlined" onClick={handleClickOpen}>
-        Se connecter
-      </button>
+    <div className="connection">
+      <button onClick={handleClickOpen}>Se connecter</button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Inscription</DialogTitle>
         <DialogContent>
@@ -59,6 +61,7 @@ export default function Login() {
               type="email"
               fullWidth
               variant="standard"
+              autoComplete="username"
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
@@ -69,13 +72,21 @@ export default function Login() {
               type="password"
               fullWidth
               variant="standard"
+              autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </form>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>annuler</Button>
-          <Button type="submit" onClick={submit}>
+          <Button size="small" variant="outlined" onClick={handleClose}>
+            annuler
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            type="submit"
+            onClick={submit}
+          >
             Se connecter
           </Button>
         </DialogActions>

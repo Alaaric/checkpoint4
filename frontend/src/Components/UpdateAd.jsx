@@ -1,6 +1,7 @@
 import { useState, useRef, useContext } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import userContext from "../contexts/userContext";
 
@@ -9,9 +10,10 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: "max-content",
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "1px solid #000",
+  borderRadius: "5px",
   boxShadow: 24,
   p: 4,
 };
@@ -72,7 +74,6 @@ export default function UpdateAd({ ad, setUserAds }) {
           .catch((err) => console.error(err));
       }, 200);
     } else {
-      console.log("test2");
       axios
         .put(
           `${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`,
@@ -97,7 +98,9 @@ export default function UpdateAd({ ad, setUserAds }) {
 
   return (
     <div>
-      <button onClick={handleOpen}>Modifier mon annonce</button>
+      <Button size="small" variant="outlined" onClick={handleOpen}>
+        Modifier mon annonce
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -105,9 +108,13 @@ export default function UpdateAd({ ad, setUserAds }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form encType="multipart/form-data" onSubmit={submit}>
+          <form
+            encType="multipart/form-data"
+            className="update-ad"
+            onSubmit={submit}
+          >
             <div className="input">
-              <div>
+              <div className="text">
                 <label htmlFor="name">
                   nom:
                   <input
@@ -130,8 +137,8 @@ export default function UpdateAd({ ad, setUserAds }) {
                   />
                 </label>
               </div>
-              <label htmlFor="photo">
-                photo:
+              <label htmlFor="photo" className="custom-file-input">
+                Choisissez une photo
                 <input type="file" id="photo" name="photo" ref={inputRef} />
               </label>
             </div>
@@ -144,7 +151,9 @@ export default function UpdateAd({ ad, setUserAds }) {
               ></textarea>
             </label>
 
-            <button type="submit">Valider</button>
+            <Button size="small" variant="outlined" type="submit">
+              Valider
+            </Button>
           </form>
         </Box>
       </Modal>

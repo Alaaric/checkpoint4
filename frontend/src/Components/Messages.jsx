@@ -7,23 +7,19 @@ export default function Messages() {
   const [messages, setMessages] = useState([]);
   const { user } = useContext(userContext);
 
-  const getMessages = () => {
+  useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/messages`, {
         withCredentials: true,
       })
       .then((res) => setMessages(res.data))
       .catch((err) => console.error(err));
-  };
-
-  useEffect(() => {
-    getMessages();
   }, []);
 
   return (
     <div className="messages">
       {messages.map((message) => (
-        <div key={message.id}>
+        <div key={message.id} className="message">
           <p>
             de: {message.firstname} {message.lastname}
           </p>
@@ -32,7 +28,7 @@ export default function Messages() {
           <DeleteConfirmModal
             state="messages"
             message={message}
-            getMessages={getMessages()}
+            setMessages={setMessages}
           />
         </div>
       ))}

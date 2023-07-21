@@ -10,7 +10,7 @@ export default function DeleteConfirmModal({
   state,
   ad,
   message,
-  getMessages,
+  setMessages,
   setUserAds,
 }) {
   const { user, setUser } = useContext(userContext);
@@ -38,7 +38,15 @@ export default function DeleteConfirmModal({
           .catch((err) => console.error(err));
         handleClose();
         setTimeout(() => {
-          getMessages;
+          axios
+            .get(
+              `${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/messages`,
+              {
+                withCredentials: true,
+              }
+            )
+            .then((res) => setMessages(res.data))
+            .catch((err) => console.error(err));
         }, 200);
         break;
       case "account":
@@ -91,16 +99,28 @@ export default function DeleteConfirmModal({
 
   return (
     <>
-      <button type="button" onClick={handleClickOpen}>
-        supprimer {display}
-      </button>
+      <Button
+        size="small"
+        variant="outlined"
+        type="button"
+        onClick={handleClickOpen}
+      >
+        Supprimer {display}
+      </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Êtes-vous sûr de vouloir supprimer {display}?</DialogTitle>
         <DialogActions>
-          <Button type="button" onClick={() => handleDelete(state)}>
+          <Button
+            type="button"
+            size="small"
+            variant="outlined"
+            onClick={() => handleDelete(state)}
+          >
             Oui
           </Button>
-          <Button onClick={handleClose}>Non</Button>
+          <Button size="small" variant="outlined" onClick={handleClose}>
+            Non
+          </Button>
         </DialogActions>
       </Dialog>
     </>

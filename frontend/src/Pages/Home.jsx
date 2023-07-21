@@ -14,7 +14,7 @@ export default function Home() {
       </p>
       <p>
         inscrivez vous et trouvez de ce pas une personne qui pourra prendre soin
-        de votre animal
+        de votre animal.
       </p>
       {!user && <Register />}
     </div>

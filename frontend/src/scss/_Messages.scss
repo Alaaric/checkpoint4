@@ -1,0 +1,32 @@
+@import "./Variables";
+
+.messages {
+  .message {
+    border-bottom: 1px solid white;
+    border-bottom-left-radius: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+
+    &:hover {
+      border-bottom: 1px solid $neon-color;
+    }
+  }
+}
+
+.message-form {
+  textarea {
+    width: 60vw;
+    height: 20rem;
+    resize: none;
+    border-radius: 5px;
+    background-color: $input-background-color;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .message-form {
+    textarea {
+      width: 34rem;
+    }
+  }
+}
