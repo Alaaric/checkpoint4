@@ -64,6 +64,7 @@ export default function Profil() {
             <input
               type="email"
               name="email"
+              autoComplete="username"
               placeholder={user && user.email}
               onChange={update}
             />
@@ -73,6 +74,7 @@ export default function Profil() {
             <input
               type="password"
               name="password"
+              autoComplete="current-password"
               onChange={(e) => setNewPassword(e.target.value)}
             />
           </label>

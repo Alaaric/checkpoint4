@@ -74,7 +74,6 @@ export default function UpdateAd({ ad, setUserAds }) {
           .catch((err) => console.error(err));
       }, 200);
     } else {
-      console.log("test2");
       axios
         .put(
           `${import.meta.env.VITE_BACKEND_URL}/ads/${ad.id}`,

@@ -26,7 +26,11 @@ export default function AdCard({ ad, setUserAds }) {
         <Typography gutterBottom variant="h5" component="div">
           Age: {ad.age} {ad.age <= 1 ? "an" : "ans"}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          style={{ minHeight: 180, maxHeight: 180, overflowY: "auto" }}
+        >
           {ad.description}
         </Typography>
       </CardContent>

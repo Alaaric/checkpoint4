@@ -10,7 +10,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
 import userContext from "../contexts/userContext";
 
-export default function Login() {
+export default function Login({ handleDisplayMenu }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [open, setOpen] = useState(false);
@@ -23,6 +23,7 @@ export default function Login() {
 
   const handleClose = () => {
     setOpen(false);
+    handleDisplayMenu();
   };
   const submit = () => {
     axios
@@ -43,10 +44,8 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <button variant="outlined" onClick={handleClickOpen}>
-        Se connecter
-      </button>
+    <div className="connection">
+      <button onClick={handleClickOpen}>Se connecter</button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Inscription</DialogTitle>
         <DialogContent>
@@ -62,6 +61,7 @@ export default function Login() {
               type="email"
               fullWidth
               variant="standard"
+              autoComplete="username"
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
@@ -72,6 +72,7 @@ export default function Login() {
               type="password"
               fullWidth
               variant="standard"
+              autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </form>
