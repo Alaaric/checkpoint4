@@ -10,7 +10,7 @@ export default function DeleteConfirmModal({
   state,
   ad,
   message,
-  getMessages,
+  setMessages,
   setUserAds,
 }) {
   const { user, setUser } = useContext(userContext);
@@ -38,7 +38,15 @@ export default function DeleteConfirmModal({
           .catch((err) => console.error(err));
         handleClose();
         setTimeout(() => {
-          getMessages;
+          axios
+            .get(
+              `${import.meta.env.VITE_BACKEND_URL}/users/${user.id}/messages`,
+              {
+                withCredentials: true,
+              }
+            )
+            .then((res) => setMessages(res.data))
+            .catch((err) => console.error(err));
         }, 200);
         break;
       case "account":

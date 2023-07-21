@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 export default function AdCard({ ad, setUserAds }) {
   const { user } = useContext(userContext);
   return (
-    <Card sx={{ maxWidth: 345, minWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, minWidth: 345 }} className="card">
       <CardMedia
         component="img"
         alt="green iguana"
@@ -30,7 +30,7 @@ export default function AdCard({ ad, setUserAds }) {
           {ad.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className="buttons-wraper">
         {user && user.id !== ad.user_id && user.id !== ad.author_id && (
           <MessageForm ad={ad} />
         )}
