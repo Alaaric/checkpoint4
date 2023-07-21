@@ -75,6 +75,7 @@ export default function Register() {
               label="Adresse email *"
               type="email"
               fullWidth
+              autoComplete="username"
               variant="standard"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -84,6 +85,7 @@ export default function Register() {
               id="password"
               label="Mot de passe *"
               type="password"
+              autoComplete="current-password"
               fullWidth
               variant="standard"
               onChange={(e) => setPassword(e.target.value)}
